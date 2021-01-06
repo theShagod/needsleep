@@ -1,5 +1,6 @@
 ## Needsleep
 ![Needsleep logo](./public/images/needSleep.png)
+
 App for tracking your sleep!
 
 ## Progress
