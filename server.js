@@ -27,6 +27,9 @@ app.use(passport.session());
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+const path = require('path')
+
+app.use('/',express.static('./public'))
 //routes
 app.use('/api', require('./routes/api-routes'))
 app.use('/', require('./routes/html-routes'))
