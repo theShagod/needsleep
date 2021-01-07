@@ -1,11 +1,66 @@
-@media screen and (min-height: 500px) {
-    body {
-      background-color: lightgreen;
-    }
-  }
+$enable-shadows: true;
 
-body {
-    background-color: rgb(241, 241, 241);
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+
+html, body{
+    height: 100%;
+    background-color: rgb(238, 238, 238);
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+    
 }
 
-@import "../../node_modules/bootstrap/scss/bootstrap.scss"
+
+.fullscreen {
+    height: 100%;
+    width:100%;
+    //background-color: red;
+}
+.bg-fill-extra {
+    background: linear-gradient(to bottom, #091D53 0%,#091D53 50%,#091D53 50%,white 50%,white 100%);
+}
+
+.bg-wave {
+    background-image: url(/images/wave-01.svg);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo-lg {
+    max-width: 300px;
+}
+
+.subtitle {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px black;
+}
+
+@function get-breakpoint($key) {
+    @return map-get($grid-breakpoints, $key);
+}
+
+@media (min-width: get-breakpoint("md")) {
+    .bg-wave {
+        background-size: 120%;
+    }
+}
+@media (min-width: get-breakpoint("lg")) {
+    .bg-wave {
+        background-size: 100%;
+    }
+}
+@media (min-width: get-breakpoint("xl")) {
+    .bg-wave {
+        background-size: 100%;
+    }
+
+}
+
