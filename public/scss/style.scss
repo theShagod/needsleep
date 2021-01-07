@@ -1,0 +1,11 @@
+@media screen and (min-height: 500px) {
+    body {
+      background-color: lightgreen;
+    }
+  }
+
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss"
