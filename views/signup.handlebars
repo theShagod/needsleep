@@ -3,28 +3,34 @@
     <div class="container px-xl-5">
     <div class="row">
         <div class="col">
-            <div class="d-flex justify-content-center justify-content-md-start">
-                <img
-                src="/images/needSleep-dark-03.svg"
-                alt="Needsleep logo"
-                class="logo-lg text-center"
-                />
-            </div>
+            <div class="filler-height"></div>
+            <a href="/">
+                <div class="d-flex justify-content-center justify-content-md-start">
+                    <img
+                    src="/images/needSleep-dark-03.svg"
+                    alt="Needsleep logo"
+                    class="logo-lg text-center"
+                    />
+                </div>
+            </a>
             
-
-            <h4 class="subtitle text-light mt-3">Needsleep helps you keep you conscious of your sleep and wake patterns.</h4>
+            <h4 class="subtitle text-light mt-3 mb-4">Needsleep helps keep you conscious of your sleep and wake patterns.</h4>
         </div>
 
         <div class="col-md-1"></div>
 
         <div class="col-lg-4 col-md-6">
             <div class="card">
-                <div class="card-body p-4 shadow-sm">
+                <div class="card-body pt-4 px-4 shadow-sm">
                     <form action="../api/signup" method="POST" class="">
-                            <input type="text" name="username" class="form-control mb-4 p-2" placeholder="username">
-                        <input type="email" name="email" class="form-control mb-4 p-2" placeholder="email">
-                        <input type="password" name="password" class="form-control mb-4 p-2" placeholder="password">
-                        <button type="submit" class="btn container-fluid btn-primary">Sign up</button>
+                            <input type="text" name="username" class="form-control mb-4 p-25" placeholder="username">
+                        <input type="email" name="email" class="form-control mb-4 p-25" placeholder="email">
+                        <input type="password" name="password" class="form-control mb-4 p-25" placeholder="password">
+                        <input type="password" name="confirm-password" class="form-control mb-4 p-25" placeholder="confirm password">
+                        <button type="submit" class="btn container-fluid btn-secondary btn-text p-2 border-radius fs-5">Sign Up</button>
+                        <div class="d-flex justify-content-center my-0">
+                            <a href="/login" class="link-primary pt-25 fs-7">Already have an account?</a>
+                        </div>
                     </form>
                     
                 </div>

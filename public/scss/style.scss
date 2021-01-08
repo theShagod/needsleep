@@ -1,29 +1,58 @@
 $enable-shadows: true;
-
-
-
+$primary: #4190CD;
+$secondary: #3D21B5;
+$font-main: "Roboto", Arial, Helvetica, sans-serif;
+$font-sub: "Times New Roman" serif;
+$border-radius: 0.5rem;
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 
 
 html, body{
     height: 100%;
-    background-color: rgb(238, 238, 238);
     padding: 0;
     margin: 0 auto;
     display: block;
     overflow: hidden;
     
 }
+.btn-text {
+    font-family: $font-main;
+    font-weight: 700;
+}
 
+.border-radius {
+    border-radius: $border-radius;
+}
 
+.form-control {
+    font-size: 0.9rem;
+    color: #5988b6;
+    border: 1.5px solid #D6D6D6;
+    border-radius: $border-radius;
+}
+
+.fs-7 {
+    font-size: 0.9rem;
+}
+.form-control::placeholder {
+    color: #D6D6D6;
+    opacity: 1; /* Firefox */
+  }
+
+.p-25 {
+    padding: .75rem;
+}
+.pt-25 {
+    padding-top: .75rem;
+}
 .fullscreen {
     height: 100%;
     width:100%;
     //background-color: red;
 }
 .bg-fill-extra {
-    background: linear-gradient(to bottom, #091D53 0%,#091D53 50%,#091D53 50%,white 50%,white 100%);
+    background: linear-gradient(to bottom, #091D53 0%,#091D53 50%,#091D53 50%,rgb(238, 238, 238) 50%,rgb(238, 238, 238) 100%);
 }
 
 .bg-wave {
@@ -38,7 +67,7 @@ html, body{
 }
 
 .subtitle {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-family: $font-main;
     font-weight: 300;
     text-shadow: 1px 1px 2px black;
 }
@@ -50,6 +79,9 @@ html, body{
 @media (min-width: get-breakpoint("md")) {
     .bg-wave {
         background-size: 120%;
+    }
+    .filler-height{
+        height: 75px;
     }
 }
 @media (min-width: get-breakpoint("lg")) {
@@ -63,4 +95,3 @@ html, body{
     }
 
 }
-
