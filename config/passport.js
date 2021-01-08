@@ -49,7 +49,7 @@ module.exports = (passport) => {
                         return cb()
                     //password doesn't match
                     } else if (bcrypt.compareSync(password, user.password)) return done(null, user)
-                    return done(null, false)
+                    return done(null, false, 'Wrong password')
                     
                 }).catch(console.log)
         }
@@ -57,7 +57,7 @@ module.exports = (passport) => {
         //if a matching username or email occurs, it will check the password to see
         //if it is matching. done will be returned based on the success of operation
         match("username",()=> {
-            match("email", () => done(null, false))
+            match("email", () => done(null, false, 'Username or email not found'))
         })
     }));
     /*

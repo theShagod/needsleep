@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5050;
 const exphbs = require('express-handlebars');
-const session = require('express-session')
+const session = require('express-session');
+const flash = require('connect-flash');
 //passport config
 const passport = require('passport')
 require('./config/passport')(passport)
@@ -18,6 +19,16 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }))
+
+//connect-flash
+app.use(flash());
+//globals for flash
+app.use((req, res, next)=> {
+    res.locals.success_msg = req.flash('success_msg'); // msgs from routes/api-routes
+    res.locals.errors = req.flash('errors');
+    res.locals.error = req.flash('error'); //msgs are from config/passport
+    next();
+})
 
 //passport
 app.use(passport.initialize());
