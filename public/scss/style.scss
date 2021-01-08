@@ -6,10 +6,13 @@
 @import "./bg-wave.scss";
 @import "./ultilities.scss";
 
+#logo:hover {
+    cursor: pointer;
+}
+
 .bg-fill-extra {
     background: linear-gradient(to bottom, #091D53 0%,#091D53 50%,#091D53 50%,rgb(238, 238, 238) 50%,rgb(238, 238, 238) 100%);
 }
-
 
 .btn-text {
     font-family: $font-main;
