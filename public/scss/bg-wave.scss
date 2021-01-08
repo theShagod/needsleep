@@ -1,0 +1,25 @@
+.bg-wave {
+    background-image: url(/images/wave-01.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@media (min-width: get-breakpoint("xs")) {
+    .bg-wave {
+        background-size: 150%;
+    }
+}
+@media (min-width: get-breakpoint("md")) {
+    .bg-wave {
+        background-size: 140%;
+    }
+}
+@media (min-width: get-breakpoint("lg")) {
+    .bg-wave {
+        background-size: 130%;
+    }
+}
+@media (min-width: get-breakpoint("xl")) {
+    .bg-wave {
+        background-size: 120%;
+    }
+}

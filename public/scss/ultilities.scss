@@ -1,0 +1,28 @@
+html, body{
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+    
+}
+
+.fullscreen {
+    height: 100%;
+    width:100%;
+}
+
+.border-radius {
+    border-radius: $border-radius;
+}
+
+.fs-7 {
+    font-size: 0.9rem;
+}
+
+.p-25 {
+    padding: .75rem;
+}
+.pt-25 {
+    padding-top: .75rem;
+}
