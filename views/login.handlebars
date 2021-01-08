@@ -6,6 +6,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-body pt-4 px-4 shadow-sm">
+                        {{> msg}}
                         <form action="../api/login" method="POST" class="">
                             <input type="text" name="username" class="form-control mb-4 p-25" placeholder="username or email" id="username">
                             <input type="password" name="password" class="form-control mb-4 p-25" placeholder="password" id="password">
