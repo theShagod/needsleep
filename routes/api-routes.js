@@ -3,10 +3,10 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const FormValidation = require('../models/FormValidation');
+const {getErrors} = require('../config/formValidation');
 
 router.post('/signup', (req, res) => {
-    var errors = FormValidation.getErrors(req.body.username, req.body.email, req.body.password, req.body['password-confirm'])
+    var errors = getErrors(req.body.username, req.body.email, req.body.password, req.body['password-confirm'])
     if(!errors) return res.send('Please fill in all fields.')
     if(errors.length === 0) { //there are no errors clientside
         let hashedPass = bcrypt.hashSync(req.body.password , bcrypt.genSaltSync(10))
