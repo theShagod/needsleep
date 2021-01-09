@@ -3,10 +3,10 @@ const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-const {getErrors} = require('../config/formValidation');
+const FormValidation = require('../models/FormValidation');
 
 router.post('/signup', (req, res) => {
-    var errors = getErrors(req.body.username, req.body.email, req.body.password, req.body['password-confirm'])
+    var errors = FormValidation.getErrors(req.body.username, req.body.email, req.body.password, req.body['password-confirm'])
     if(!errors) return res.send('Please fill in all fields.')
     if(errors.length === 0) { //there are no errors clientside
         let hashedPass = bcrypt.hashSync(req.body.password , bcrypt.genSaltSync(10))
@@ -36,6 +36,13 @@ router.post('/login', (req, res, next) => {
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next)
+})
+
+router.get('/logout', (req, res)=> {
+    req.logout();
+    req.flash('success_msg', 'Logout successful')
+    res.redirect('/login');
+    
 })
 
 module.exports = router

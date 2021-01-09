@@ -1,8 +1,8 @@
-module.exports = {
+const FormValidation = {
     /*
-        getErrors
-            findErrors          
-                cGnrlPassReq
+    displayStatus
+        findErrors          
+            cGnrlPassReq
     */
     getErrors: function (username, email, password, passwordConfirm){
         var errors = this.findErrors(username, email, password, passwordConfirm);
@@ -63,4 +63,4 @@ module.exports = {
     }
     
 };
-
+module.exports = FormValidation;

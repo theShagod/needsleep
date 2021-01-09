@@ -17,7 +17,10 @@ app.use(express.urlencoded({extended: false}))
 app.use(session({
     secret:'cats',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000*60*60*24 * 30 //expires in 30 days
+    }
 }))
 
 //connect-flash
