@@ -13,5 +13,10 @@ Then you need to use a Scss compiler like [sass.js.org/](https://sass.js.org/) t
 ### Technologies
 - qunit
 
+### Database
+User - sequelize defaults, email, username, password
+Bed - userid, type(wake/bed), date
+
+sequelize defaults are: createdat, updatedat, id
 ### Progress
 See the trello board here: [trello.com](https://trello.com/b/IoNT9oOG/needsleep)

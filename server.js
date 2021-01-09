@@ -43,6 +43,7 @@ app.set('view engine', 'handlebars');
 
 const path = require('path')
 
+//other assets like css, js
 app.use('/',express.static('./public'))
 //routes
 app.use('/api', require('./routes/api-routes'))

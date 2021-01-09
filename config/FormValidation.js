@@ -1,4 +1,4 @@
-const FormValidation = {
+module.exports = {
     /*
     displayStatus
         findErrors          
@@ -63,4 +63,4 @@ const FormValidation = {
     }
     
 };
-module.exports = FormValidation;
+
