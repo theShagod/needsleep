@@ -5,13 +5,13 @@
 @import "./functions.scss";
 @import "./bg-wave.scss";
 @import "./ultilities.scss";
-
+@import "./toggle.scss";
 #logo:hover {
     cursor: pointer;
 }
 
 .bg-fill-extra {
-    background: linear-gradient(to bottom, #091D53 0%,#091D53 50%,#091D53 50%,rgb(238, 238, 238) 50%,rgb(238, 238, 238) 100%);
+    background: linear-gradient(to bottom, $dark 0%,$dark 50%,$dark 50%,rgb(238, 238, 238) 50%,rgb(238, 238, 238) 100%);
 }
 
 .btn-text {
@@ -21,12 +21,12 @@
 
 .form-control {
     font-size: 0.9rem;
-    border: 1.5px solid #D6D6D6;
+    border: 1.5px solid $outline;
     border-radius: $border-radius;
 }
 
 .form-control::placeholder {
-    color: #D6D6D6;
+    color: $outline;
     opacity: 1; /* Firefox */
 }
 
@@ -35,3 +35,4 @@
     font-weight: 300;
     text-shadow: 1px 1px 2px black;
 }
+

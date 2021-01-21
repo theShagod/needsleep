@@ -7,6 +7,8 @@ const flash = require('connect-flash');
 //passport config
 const passport = require('passport')
 require('./config/passport')(passport)
+//connects to db
+const sequelize = require('./models')
 
 //accepts json payloads
 app.use(express.json())
@@ -37,19 +39,39 @@ app.use((req, res, next)=> {
 app.use(passport.initialize());
 app.use(passport.session());
 
+//other assets like css, js
+app.use('/',express.static('./public'))
+
 //handlebars view engine 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-const path = require('path')
+const { test } = require('qunit');
 
-//other assets like css, js
-app.use('/',express.static('./public'))
 //routes
-app.use('/api', require('./routes/api-routes'))
+app.use('/api', require('./routes/user-routes'))
+app.use('/api', require('./routes/bed-routes'))
 app.use('/', require('./routes/html-routes'))
 
+async function seqTest(){
+    const {User, Bed} = sequelize.models
+    user = await User.create({username:'ff', password: '1234567890', email:'ff@gmail.com'})
+    const users = await User.findAll()
+    bed = await Bed.create({type:'wake', test: '69'})
+    bed2 = await Bed.create({type:'sleep', test: '70'})
+    await user.addBeds(bed)
+    await user.addBeds(bed2)
+    console.log(await user.getBeds())
+}
 
-app.listen(PORT, ()=> {
+app.listen(PORT, async ()=> {
+    try {
+        await sequelize.authenticate(); //check if connection made
+    } catch {
+        console.log('db connection failed.')
+    }
+    
+    await sequelize.sync({force:false});
+    //await seqTest()
     console.log('Listening on Port', PORT)
 })

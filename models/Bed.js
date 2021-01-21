@@ -1,4 +1,4 @@
-const {DataTypes} = require('sequelize')
+const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) =>
 {
@@ -16,8 +16,8 @@ module.exports = (sequelize) =>
             allowNull: false
         }
         */
-        test: {
-            type: DataTypes.STRING,
+        date: {
+            type: DataTypes.DATE,
             allowNull: false
         }
     });

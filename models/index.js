@@ -2,7 +2,7 @@ const {Sequelize} = require('sequelize');
 const env =  process.env.NODE_ENV || "development"
 const config = require('../config/config.json')[env]
 const sequelize = new Sequelize(config)
-sequelize.authenticate();
+
 
 const dbs = [
     require('./User'),
@@ -17,10 +17,4 @@ for (const db of dbs){
 const {User, Bed} = sequelize.models;
 User.hasMany(Bed);
 
-
-
-
-
-
-sequelize.sync({force:true});
-module.exports = sequelize
+module.exports = sequelize;

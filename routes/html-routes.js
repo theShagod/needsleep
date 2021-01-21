@@ -14,7 +14,10 @@ router.get('/signup', ensureAuthenticated('render', 'signup'), (req,res)=>{
 })
 
 router.get('/dashboard', ensureAuthenticated('redirect', '/login'), (req,res)=>{
-    res.render('dashboard')
+    console.log(req.session.allBeds)
+    res.render('dashboard', {
+        data: req.session.allBeds
+    })
 })
 
 module.exports = router

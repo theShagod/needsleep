@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const sequelize = require('../models/index');
+const {User} = require('../models/index').models;
 const bcrypt = require('bcryptjs');
 const FormValidation = require('../config/FormValidation');
 
@@ -10,7 +10,7 @@ router.post('/signup', (req, res) => {
     if(!errors) return res.send('Please fill in all fields.')
     if(errors.length === 0) { //there are no errors clientside
         let hashedPass = bcrypt.hashSync(req.body.password , bcrypt.genSaltSync(10))
-        sequelize.models.User.create({
+        User.create({
             username: req.body.username,
             email: req.body.email,
             password: hashedPass

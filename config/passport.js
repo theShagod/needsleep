@@ -1,6 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
-const sequelize = require('../models/index');
+const {User} = require('../models/index').models;
 const bcrypt = require('bcryptjs');
 //the issue is the username
 module.exports = (passport) => {
@@ -42,7 +42,7 @@ module.exports = (passport) => {
     (username, password, done)=>{
         const match = (field, cb) => {
             let search = JSON.parse(`{"${field}":"${username}"}`)
-            sequelize.models.User.findOne({where: search})
+            User.findOne({where: search})
                 .then(user => {
                     //user not found
                     if(!user) {
@@ -71,7 +71,7 @@ module.exports = (passport) => {
         done(null, user.id)
     });
     passport.deserializeUser((id, done) => {
-        sequelize.models.User.findOne({where: {id: id}})
+        User.findOne({where: {id: id}})
         .then(user => {
             done(null, user.id);
         }).catch(console.log)
