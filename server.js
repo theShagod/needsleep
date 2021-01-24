@@ -57,8 +57,8 @@ async function seqTest(){
     const {User, Bed} = sequelize.models
     user = await User.create({username:'ff', password: '1234567890', email:'ff@gmail.com'})
     const users = await User.findAll()
-    bed = await Bed.create({type:'wake', test: '69'})
-    bed2 = await Bed.create({type:'sleep', test: '70'})
+    bed = await Bed.create({type:'wake', date: '2021-01-24T02:01'})
+    bed2 = await Bed.create({type:'sleep', date: '2021-01-24T02:10'})
     await user.addBeds(bed)
     await user.addBeds(bed2)
     console.log(await user.getBeds())

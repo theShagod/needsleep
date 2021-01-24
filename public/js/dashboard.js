@@ -1,6 +1,9 @@
 const status = document.querySelector('#bedOrWake');
 const date = document.querySelector('#date')
-date.value = moment().format("YYYY-MM-DDThh:mm");
+
+date.value = moment().format("YYYY-MM-DDTkk:mm");
+//location.href = 'http://localhost:5050/api/getBed'
+
 document.addEventListener("click",event => {
     if ('bedOrWake' == event.target.id){
         if (status.checked){
@@ -17,7 +20,7 @@ document.addEventListener("submit", event=> {
     if (status.checked){
         type = "wake";
     } else{
-        type = "bed";
+        type = "sleep";
     }
 
     console.log(date.value)
@@ -32,5 +35,15 @@ document.addEventListener("submit", event=> {
             'Content-Type':'application/json'
         },
         body:JSON.stringify(data)
-    })
+    }).then(res => {
+        if (res.ok){
+            console.log('Success!')
+        } else {
+            console.log('Error')
+        }
+        
+    }).then(()=> {
+        console.log('goign to get bed')
+        location.href = "http://localhost:5050/api/getBed"
+    }).catch(err => {console.log(err)})
 })

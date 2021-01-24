@@ -32,7 +32,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/dashboard',
+        successRedirect: '/api/getBed',
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next)

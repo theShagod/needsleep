@@ -1,4 +1,4 @@
-<div class="fullscreen bg-light">
+<div class="bg-light fullscreen">
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,15 +52,18 @@
         </div>
         -->
     </div>
-
-    {{#if data}}
-        {{#each data}}
-            <li class="text-light">{{this.type}} : {{this.date}}</li>
-        {{/each}}
-    {{/if}}
+    <div class="container">
+        {{#if data}}
+            {{#each data}}
+                <li>{{this.type}} : {{this.date}}</li>
+            {{/each}}
+        {{/if}}
+    </div>
+    
 
 
 
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-<script src="./js/entry.js"></script>
+<script src="./js/dashboard.js"></script>
+
