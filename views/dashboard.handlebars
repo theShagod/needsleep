@@ -4,9 +4,6 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" >Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
 
             <div class="d-flex">
                 <button class="btn btn-primary"><a href="/api/logout" class="text-light no-underline">Logout</a></button>
@@ -17,18 +14,18 @@
         <nav class="navbar navbar-nav navbar-expand-lg navbar-light bg-white card-bot">
             <div class="container">
                 <label class="switch btn">
-                    <input type="checkbox" name="type">
+                    <input type="checkbox" name="type" id="bedOrWake">
                     <div class="slider"></div>
                 </label>
                 <div class="">
                     <form action="/api/addBed" method="POST" class="d-flex">
-                        <input type="datetime-local" name="date" value="2021-01-01T00:00" class="form-control me-2">
+                        <input type="datetime-local" name="date" value="2021-01-01T00:00" class="form-control me-2" id = "date">
                         <button type="submit" class="btn btn-primary text-light">Submit</button>
                     </form>
                 </div>
                 <div class="d-flex">
                     <select name="mode" class="form-select" aria-label="Default select example" disabled>
-                        <option value="add" selected>Add</option>
+                        <option value="add">Add</option>
                         <option value="1">Delete</option>
                         <option value="1">Update</option>
                         <option value="1">Filter</option>
@@ -65,3 +62,5 @@
 
 
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+<script src="./js/entry.js"></script>
