@@ -1,15 +1,31 @@
-const status = document.querySelector('#bedOrWake');
+const bedOrWake = document.querySelector('#bedOrWake');
 const date = document.querySelector('#date')
-
 date.value = moment().format("YYYY-MM-DDTkk:mm");
 //location.href = 'http://localhost:5050/api/getBed'
 
+if (window.localStorage){
+    console.log('localstorage exists');
+    var bedOrWakeStatus = localStorage.getItem('bedOrWakeStatus');
+    if (bedOrWakeStatus !== null){
+        console.log("localStorage.getItem('bedOrWakeStatus'): ", bedOrWakeStatus)
+            bedOrWake.checked = JSON.parse(bedOrWakeStatus)
+        
+        
+    } else{
+        bedOrWake.checked= false;
+        localStorage.setItem('bedOrWakeStatus', false);
+    }
+}
+
 document.addEventListener("click",event => {
     if ('bedOrWake' == event.target.id){
-        if (status.checked){
-           console.log('wake') 
+        if (bedOrWake.checked){
+            console.log('wake')
+            localStorage.setItem('bedOrWakeStatus', true)
+            
         } else {
             console.log('bed')
+            localStorage.setItem('bedOrWakeStatus', false)
         }
     }
 })
@@ -17,11 +33,15 @@ document.addEventListener("click",event => {
 document.addEventListener("submit", event=> {
     event.preventDefault();
     let type;
-    if (status.checked){
+    if (bedOrWake.checked){
         type = "wake";
     } else{
         type = "sleep";
     }
+    var bedOrWakeStatus = JSON.parse(localStorage.getItem('bedOrWakeStatus'))
+    localStorage.setItem('bedOrWakeStatus', !bedOrWakeStatus)
+    bedOrWake.checked = !bedOrWakeStatus
+    
 
     console.log(date.value)
     let data = {

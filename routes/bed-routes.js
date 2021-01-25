@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {ensureAuthenticated} = require('../config/auth')
 const {User, Bed} = require('../models').models;
-const sequelize = require('../models')
+
+const moment = require('moment');
+
 router.post('/addBed', ensureAuthenticated('redirect', '/login'), async (req, res) => {
     //if type is not sleep and not wake
     console.log(req.body)
@@ -25,6 +27,21 @@ router.get('/getBed', async (req, res) => {
     }})
     req.session.allBeds = await user.getBeds();
     //res.json('success you got this msg (from bed-routes)')
+    req.session.allBedsReadable = req.session.allBeds.map(item => {
+        return {
+            type: item.type,
+            date: moment(item.date).format('MMMM Do YYYY, h:mm a')
+        }
+    })
     res.redirect('/dashboard')
+})
+
+router.get('/getDat', async (req, res) => {
+    const user = await User.findOne({where: {
+        id: req.user
+    }})
+    req.session.allBeds = await user.getBeds();
+
+    res.json(req.session.allBeds)
 })
 module.exports = router

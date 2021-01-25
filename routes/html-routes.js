@@ -17,7 +17,7 @@ router.get('/dashboard', ensureAuthenticated('redirect', '/login'), (req,res)=>{
     //defined allBeds in bed-routes
     console.log(req.session.allBeds)
     res.render('dashboard', {
-        data: req.session.allBeds
+        data: req.session.allBedsReadable
     })
 })
 
