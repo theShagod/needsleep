@@ -1,10 +1,18 @@
 /*
 @credits https://bl.ocks.org/gordlea/27370d1eea8464b04538e6d8ced39e89
 */
+var data;
 function makePtGraph(dat){
+    var graph = document.querySelector('#pt-graph');
+    var display = graph.childNodes[0];
+    if (display){
+        graph.removeChild(display); 
+    }
+    
+
     var margin = {top: 50, right: 50, bottom: 50, left: 50}
-    , width = window.innerWidth - margin.left - margin.right // Use the window's width 
-    , height = window.innerHeight - margin.top - margin.bottom; // Use the window's height
+    , width = graph.offsetWidth - margin.left - margin.right // Use the window's width, 
+    , height = window.innerHeight - margin.top - margin.bottom - 150; // Use the window's height, 100 is the size of the navs
 
     // The number of datapoints
 
@@ -28,7 +36,7 @@ function makePtGraph(dat){
     var n = dataset.length;
     //ordered so that x domain is set properly
     var orderedX = dataset.sort((a, b) => {
-        return - new Date(a.date) + new Date(a.date)
+        return new Date(a.date) - new Date(b.date)
     })
     console.log(orderedX[n-1].date)
     // 5. X scale will use the index of our data
@@ -44,7 +52,7 @@ function makePtGraph(dat){
     var xAxis = d3.axisBottom(x)
         //.tickFormat(d3.timeFormat("%b %d")); // <-- format
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#pt-graph").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -97,5 +105,14 @@ fetch('/api/getDat').then(res => {
     }
 
 }).then(dat => {
+    data = dat;
     makePtGraph(dat);
 }).catch(console.log)
+
+window.addEventListener('resize', ()=> {
+    if (data == null) {
+        console.log('fuck me')
+        return;}
+    console.log('resize event')
+    makePtGraph(data);
+});
