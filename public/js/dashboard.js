@@ -64,6 +64,6 @@ document.addEventListener("submit", event=> {
         
     }).then(()=> {
         console.log('goign to get bed')
-        location.href = "http://localhost:5050/api/getBed"
+        location.href = "/api/getBed"
     }).catch(err => {console.log(err)})
 })
